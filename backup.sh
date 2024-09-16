@@ -12,8 +12,8 @@ NEW_BACKUP_DIR="$BACKUP_DIR/backup_$TIMESTAMP"
 # Create backup directory
 mkdir -p "$NEW_BACKUP_DIR"
 
-# Copy files to the backup directory
-cp -r "$SOURCE_DIR/"* "$NEW_BACKUP_DIR"
+# This will compress the contents of the source directory into a .tar.gz file inside your backup directory. This will reduce the space
+tar -czf "$NEW_BACKUP_DIR.tar.gz" -C "$SOURCE_DIR" .
 
 # Log success message
 echo "$(date '+%Y-%m-%d %H:%M:%S') - Backup completed successfully to $NEW_BACKUP_DIR" >> "$LOG_FILE"
